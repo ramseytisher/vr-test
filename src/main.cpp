@@ -7,6 +7,16 @@
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
 
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// left_front           motor         1               
+// left_back            motor         2               
+// right_front          motor         3               
+// right_back           motor         4               
+// Controller1          controller                    
+// ---- END VEXCODE CONFIGURED DEVICES ----
+
 #include "vex.h"
 
 using namespace vex;
@@ -60,10 +70,17 @@ void autonomous(void) {
 
 void usercontrol(void) {
   // User control code here, inside the loop
-  while (1) {
+  while (true) {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
+
+    int left_joy = Controller1.Axis3.value();
+    int right_joy = Controller1.Axis2.value();
+
+    Brain.Screen.clearScreen();
+    Brain.Screen.setCursor(1,1);
+    Brain.Screen.print("Hello Robot");
 
     // ........................................................................
     // Insert user code here. This is where you use the joystick values to
